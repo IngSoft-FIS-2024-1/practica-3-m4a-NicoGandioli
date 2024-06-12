@@ -6,6 +6,7 @@ const btnAdd = document.getElementById('btn-add');
 const inpTitle = document.getElementById('inp-title');
 const inpAuthor = document.getElementById('inp-author');
 const inpPages = document.getElementById('inp-pages');
+const inpWords = document.getElementById('inp-words'); //nuevo
 
 const myLibrary = new Library('Papiros');
 libraryName.innerHTML = myLibrary.getName();
@@ -33,7 +34,7 @@ btnAdd.addEventListener('click', () => {
   const bookErrorContainer = document.getElementById('add-book-error');
   const bookError = document.getElementById('add-book-error-msg');
   try {
-    myLibrary.addBook(inpTitle.value, inpAuthor.value, parseInt(inpPages.value));
+    myLibrary.addBook(inpTitle.value, inpAuthor.value, parseInt(inpPages.value),parseInt(inpWords.value));  //esto es nuevo,parseInt(inpWords.value));
     clearInputs();
     bookErrorContainer.classList.add('d-none');
     updateInventory();

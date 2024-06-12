@@ -23,8 +23,8 @@ class Book {
     return this.#pages;
   }
 
-  getWords() {
-    // TODO
+  getWords() {      //echo en clase
+   return this.#words;
   }
 
   setTitle(title) {
@@ -40,28 +40,31 @@ class Book {
 
   setAuthor(author) {
     if (typeof (author) !== 'string') {
-      throw new Error()
+      throw new Error(); //agrego punto y coma
     }
     author = author.trim();
     if (author.length === 0) {
-      author = "Anónimo";
+      author = 'Anónimo'; //comillas simples en ves de ""
     }
     this.#author = author;
   }
 
   setPages(pages) {
     if (typeof (pages) !== 'number' || isNaN(pages)) {
-      throw new Error()
+      throw new Error(); //punto y coma
     }
     if (pages < 1) {
-      throw new Error()
+      throw new Error(); //punto y coma
     }
     pages = Math.trunc(pages);
     this.#pages = pages;
   }
 
-  setWords() {
-    // TODO
+  setWords(words) {       //ejercicio todo echo en clase
+    if (typeof (words) !== 'number' || isNaN(words)) {
+      throw new Error(); //copie el codigo de if de setPages que te ayuda a verificar si es un string o no
+    }
+    this.#words =words;
   }
 
   wordsPerPage() {

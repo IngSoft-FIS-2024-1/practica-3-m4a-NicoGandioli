@@ -12,12 +12,12 @@ class Library {
   }
 
   setName(name) {
-    if (typeof (name) !== "string") {
-      throw new Error()
+    if (typeof (name) !== 'string') {  //puse comilla simple en stirng y punto y coma en Error()
+      throw new Error();
     }
     name = name.trim();
     if (name.length === 0) {
-      throw new Error()
+      throw new Error();  //agrege punto y coma
     }
     this.#name = name;
   }
@@ -26,8 +26,9 @@ class Library {
     return this.#name;
   }
 
-  addBook(title, author, pages) {
-    const newBook = new Book(title, author, pages);
+  addBook(title, author, pages,words) {  //agrego words
+    const newBook = new Book(title, author, pages,words); //agrego words
+    newBook.setWords();
     this.#inventory.push(newBook);
   }
 
@@ -40,8 +41,13 @@ class Library {
   }
 
   totalWords() {
-    // TODO
+    // FALTA HACER
   }
+  
+  wordCount(){
+    //falta hacer 
+  }
+  
 }
 
 export default Library;
