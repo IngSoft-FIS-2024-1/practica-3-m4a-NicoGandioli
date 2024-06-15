@@ -4,20 +4,18 @@ class Library {
 
   #name;
   #inventory = [];
-  #totalWords;
-  #wordCount;
 
   constructor(name) {
     this.setName(name);
   }
 
   setName(name) {
-    if (typeof (name) !== 'string') {  //puse comilla simple en stirng y punto y coma en Error()
+    if (typeof (name) !== 'string') {
       throw new Error();
     }
     name = name.trim();
     if (name.length === 0) {
-      throw new Error();  //agrege punto y coma
+      throw new Error();
     }
     this.#name = name;
   }
@@ -26,10 +24,10 @@ class Library {
     return this.#name;
   }
 
-  addBook(title, author, pages,words) {  //agrego words
-    const newBook = new Book(title, author, pages,words); //agrego words
-    newBook.setWords();
+  addBook(title, author, pages) {
+    const newBook = new Book(title, author, pages);
     this.#inventory.push(newBook);
+    return newBook;
   }
 
   getInventory() {
@@ -40,14 +38,13 @@ class Library {
     return this.#inventory.length;
   }
 
-  totalWords() {
-    // FALTA HACER
+  totalWords() {  //echo en clase 
+    let totalWords = 0;
+    this.#inventory.forEach((book) => {
+      if (book.getWords() != undefined) totalWords += book.getWords();
+    });
+    return totalWords;
   }
-  
-  wordCount(){
-    //falta hacer 
-  }
-  
 }
 
 export default Library;

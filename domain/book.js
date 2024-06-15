@@ -23,13 +23,13 @@ class Book {
     return this.#pages;
   }
 
-  getWords() {      //echo en clase
-   return this.#words;
+  getWords() {  //echo en clase
+    return this.#words;
   }
 
   setTitle(title) {
     if (typeof (title) !== 'string') {
-      throw new Error();
+      throw new Error();  //agrego punto y coma, sale el error con npm run lint o run test
     }
     title = title.trim();
     if (title.length === 0) {
@@ -40,35 +40,36 @@ class Book {
 
   setAuthor(author) {
     if (typeof (author) !== 'string') {
-      throw new Error(); //agrego punto y coma
+      throw new Error();
     }
     author = author.trim();
     if (author.length === 0) {
-      author = 'Anónimo'; //comillas simples en ves de ""
+      author = 'Anónimo';   //cambie las comillas, a comillas simples 
     }
     this.#author = author;
   }
 
   setPages(pages) {
     if (typeof (pages) !== 'number' || isNaN(pages)) {
-      throw new Error(); //punto y coma
+      throw new Error();
     }
     if (pages < 1) {
-      throw new Error(); //punto y coma
+      throw new Error();
     }
     pages = Math.trunc(pages);
     this.#pages = pages;
   }
 
-  setWords(words) {       //ejercicio todo echo en clase
+  setWords(words) {  //ejercicio echo todo en clase 
     if (typeof (words) !== 'number' || isNaN(words)) {
-      throw new Error(); //copie el codigo de if de setPages que te ayuda a verificar si es un string o no
+      throw new Error();
     }
-    this.#words =words;
+    words = Math.trunc(words);
+    this.#words = words;
   }
 
-  wordsPerPage() {
-    // TODO
+  wordsPerPage() {  //echo en clase
+    return this.#words / this.#pages;
   }
 
   toString() {

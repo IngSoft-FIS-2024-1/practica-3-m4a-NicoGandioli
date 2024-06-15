@@ -27,32 +27,40 @@ describe('Book', () => {
   it('check title is not empty', () => {
     expect(() => myBook = new Book('', 'Horacio Quiroga', 350)).toThrow();
   });
-
-  it('check author is a string', () => {
-    expect(() => myBook = new Book('Titulo',null, 350)).toThrow(); //echo en clase
+  
+  it('check author is a string', () => {   //nuevo 
+    expect(() => myBook = new Book('Titulo', null, 350)).toThrow();
   });
 
-  it('check page param is a number', () => {
-    expect(() => new Book('Titulo','Autor','string')).toThrow();    //echo en clase
+  it('empty author is converted to "Anónimo"', () => {
+    const anonBook = new Book('Titulo', '', 350);
+    expect(anonBook.getAuthor()).toBe('Anónimo');
+  });
+
+  it('check page param is a number', () => {   //echo en clase
+    expect(() => myBook = new Book('Titulo', 'Autor', 'a')).toThrow();
   });
 
   it('check pages not < 1', () => {
-    expect(() => new Book('Titulo','Autor',0)).toThrow(); 
+    expect(() => myBook = new Book('Titulo', 'Autor', 0)).toThrow();
   });
 
   it('toString()', () => {
-    // TODO
+    expect(myBook.toString()).toBe('Título: Cuentos de la Selva Autor: Horacio Quiroga Páginas: 350');
   });
 
-  it('check words param is a number', () => {
-    let aBook = new Book('Titulo','Autor',100);
-    expect(() => aBook.setWords('string')).toThrow();    //echo en clase, ejemplo de set words
+  it('check words is a number', () => {   //echo en clase 
+    expect(() => myBook.setWords('a')).toThrow();
+  });
+           
+  it('return words', () => {   //este y el de abajo echo por martin 
+    myBook.setWords(70000);
+    expect(myBook.getWords()).toBe(70000);
   });
 
-  it('getWords returns the word count', () => {
-    let aBook = new Book('Titulo','Autor',100);
-    aBook.setWords(3000);
-    expect(() => aBook.getWords()).toBe(3000);    //echo en clase, ejemplo de Get words
+  it('return words per page', () => {
+    myBook.setWords(70000);
+    expect(myBook.wordsPerPage()).toBe(200);
   });
 
 });
